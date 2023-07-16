@@ -10,7 +10,7 @@
     "react-scripts": "^5.0.1"
   },
   "name": "ljg0t8",
-  "description": null,
+  "description": "",
   "version": "0.0.0",
   "scripts": {
     "start": "react-scripts start",
