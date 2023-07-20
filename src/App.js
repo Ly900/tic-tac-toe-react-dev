@@ -13,8 +13,12 @@ export default function Board() {
 	const [squares, setSquares] = useState(Array(9).fill(null));
 
 	function handleClick(i) {
-		console.log('clicked');
 		const nextSquares = squares.slice();
+
+		if (nextSquares[i]) {
+			return;
+		}
+
 		if (xIsNext) {
 			nextSquares[i] = 'X';
 		} else {
