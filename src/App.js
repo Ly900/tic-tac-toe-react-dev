@@ -17,14 +17,11 @@ function Square({ value, index, lines, onSquareClick }) {
 
 function Board({ xIsNext, squares, onPlay }) {
 	function handleClick(i) {
-		// console.log('Board handleClick');
-		// console.log('squares: ', squares);
 		if (squares[i] || calculateWinner(squares)) {
 			return;
 		}
 
 		const nextSquares = squares.slice();
-		// console.log('nextSquares: ', nextSquares);
 
 		if (xIsNext) {
 			nextSquares[i] = 'X';
@@ -35,26 +32,12 @@ function Board({ xIsNext, squares, onPlay }) {
 	}
 
 	const winner = calculateWinner(squares);
-	// const winningRows = calculateWinner(squares)[1];
-	// console.log('winningRows: ', winningRows);
-	// [winner, winningIndex, lines] = winner;
-
-	// const winningLetter = winner[0];
-	// console.log('winningLetter: ', winningLetter);
-	// const winningIndex = winner[1];
-	// console.log('winningIndex: ', winningIndex);
-	// const lines = winner[2];
-	// console.log('lines: ', lines);
 
 	let status;
 	let winningLetter, winningIndex, lines;
 	if (winner) {
 		status = 'Winner: ' + winner[0];
 		[winningLetter, winningIndex, lines] = winner;
-		console.log('winningLetter: ', winningLetter);
-		console.log('winningIndex: ', winningIndex);
-		console.log('lines: ', lines);
-	} else {
 		status = 'Next player: ' + (xIsNext ? 'X' : 'O');
 	}
 
