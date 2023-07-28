@@ -32,10 +32,46 @@ function Board({ xIsNext, squares, onPlay }) {
 		status = 'Next player: ' + (xIsNext ? 'X' : 'O');
 	}
 
+	function getSquaresSet(index) {
+		const squareStartingIndex = index * 3;
+		const index1 = squareStartingIndex;
+		const index2 = squareStartingIndex + 1;
+		const index3 = squareStartingIndex + 2;
+		return (
+			<>
+				<Square
+					key={index1}
+					value={squares[index1]}
+					onSquareClick={() => handleClick(index1)}
+				/>
+				<Square
+					key={index2}
+					value={squares[index2]}
+					onSquareClick={() => handleClick(index2)}
+				/>
+				<Square
+					key={index3}
+					value={squares[index3]}
+					onSquareClick={() => handleClick(index3)}
+				/>
+			</>
+		);
+	}
+
+	const boardRowsEmpty = Array(3).fill(null);
+
+	const boardRows = boardRowsEmpty.map((emptyBoardRow, index) => {
+		return (
+			<div className="board-row" key={index}>
+				{getSquaresSet(index)}
+			</div>
+		);
+	});
+
 	return (
 		<>
 			<div className="status">{status}</div>
-			<div className="board-row">
+			{/* <div className="board-row">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
 				<Square value={squares[2]} onSquareClick={() => handleClick(2)} />
@@ -49,7 +85,8 @@ function Board({ xIsNext, squares, onPlay }) {
 				<Square value={squares[6]} onSquareClick={() => handleClick(6)} />
 				<Square value={squares[7]} onSquareClick={() => handleClick(7)} />
 				<Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-			</div>
+			</div> */}
+			{boardRows}
 		</>
 	);
 }
