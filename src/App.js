@@ -10,11 +10,14 @@ function Square({ value, onSquareClick }) {
 
 function Board({ xIsNext, squares, onPlay }) {
 	function handleClick(i) {
+		// console.log('Board handleClick');
+		// console.log('squares: ', squares);
 		if (squares[i] || calculateWinner(squares)) {
 			return;
 		}
 
 		const nextSquares = squares.slice();
+		// console.log('nextSquares: ', nextSquares);
 
 		if (xIsNext) {
 			nextSquares[i] = 'X';
@@ -67,6 +70,7 @@ export default function Game() {
 	const [currentMove, setCurrentMove] = useState(0);
 	const xIsNext = currentMove % 2 === 0;
 	const currentSquares = history[currentMove];
+	const [sortAscending, setSortAscending] = useState(true);
 
 	function handlePlay(nextSquares) {
 		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
@@ -107,13 +111,20 @@ export default function Game() {
 		return movesHTML;
 	});
 
+	function sortMoves() {
+		setSortAscending(!sortAscending);
+	}
+
 	return (
 		<div className="game">
 			<div className="game-board">
 				<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+				<div className="sort-moves">
+					<button onClick={sortMoves}>Sort Moves</button>
+				</div>
 			</div>
 			<div className="game-info">
-				<ol>{moves}</ol>
+				<ol>{sortAscending ? moves : moves.reverse()}</ol>
 			</div>
 		</div>
 	);

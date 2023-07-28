@@ -93,3 +93,7 @@ body {
 .current-move {
 	font-size: 0.8rem;
 }
+
+.sort-moves {
+	margin-block: 0.5rem;
+}
