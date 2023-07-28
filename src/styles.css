@@ -97,3 +97,7 @@ body {
 .sort-moves {
 	margin-block: 0.5rem;
 }
+
+.highlight {
+	background: yellow;
+}
