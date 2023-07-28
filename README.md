@@ -1,6 +1,6 @@
 # Tic-Tac-Toe
 
-**URL:** https://ly900.github.io/tic-tac-toe-react-dev/
+**URL:** https://ly900.github.io/tic-tac-toe-react-dev/(https://github.com/Ly900/tic-tac-toe-react-dev/assets/12722650/6cdae7d9-7639-4ee2-bf2c-bd0a6f70a723)
 
 ![image](https://github.com/Ly900/tic-tac-toe-react-dev/assets/12722650/6cdae7d9-7639-4ee2-bf2c-bd0a6f70a723)
 
