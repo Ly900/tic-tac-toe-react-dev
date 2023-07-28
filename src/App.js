@@ -41,12 +41,17 @@ function Board({ xIsNext, squares, onPlay }) {
 		for (let j = 0; j <= 2; j++) {
 			squareRows.push(
 				<Square
+					key={squareStartingIndex + j}
 					value={squares[squareStartingIndex + j]}
 					onSquareClick={() => handleClick(squareStartingIndex + j)}
 				/>
 			);
 		}
-		boardArray.push(<div className="board-row">{squareRows}</div>);
+		boardArray.push(
+			<div className="board-row" key={i}>
+				{squareRows}
+			</div>
+		);
 	}
 
 	return (
