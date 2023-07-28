@@ -35,9 +35,15 @@ function Board({ xIsNext, squares, onPlay }) {
 
 	let status;
 	let winningLetter, winningIndex, lines;
+
+	const nextSquares = squares.slice();
+	const remainingSquares = nextSquares.includes(null);
+
 	if (winner) {
 		[winningLetter, winningIndex, lines] = winner;
 		status = 'Winner: ' + winningLetter;
+	} else if (winner === null && !remainingSquares) {
+		status = `It's a tie!`;
 	} else {
 		status = 'Next player: ' + (xIsNext ? 'X' : 'O');
 	}
@@ -85,7 +91,7 @@ export default function Game() {
 		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
 		setHistory(nextHistory);
 		setCurrentMove(nextHistory.length - 1);
-		console.log('nextSquares: ', nextSquares);
+		// console.log('nextSquares: ', nextSquares);
 	}
 
 	function jumpTo(nextMove) {
