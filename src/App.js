@@ -32,61 +32,27 @@ function Board({ xIsNext, squares, onPlay }) {
 		status = 'Next player: ' + (xIsNext ? 'X' : 'O');
 	}
 
-	function getSquaresSet(index) {
-		const squareStartingIndex = index * 3;
-		const index1 = squareStartingIndex;
-		const index2 = squareStartingIndex + 1;
-		const index3 = squareStartingIndex + 2;
-		return (
-			<>
+	const boardArray = [];
+	let startIndex;
+	for (let i = 0; i <= 2; i++) {
+		let squareRows = [];
+		let squareStartingIndex = i * 3;
+		startIndex = i * 0;
+		for (let j = 0; j <= 2; j++) {
+			squareRows.push(
 				<Square
-					key={index1}
-					value={squares[index1]}
-					onSquareClick={() => handleClick(index1)}
+					value={squares[squareStartingIndex + j]}
+					onSquareClick={() => handleClick(squareStartingIndex + j)}
 				/>
-				<Square
-					key={index2}
-					value={squares[index2]}
-					onSquareClick={() => handleClick(index2)}
-				/>
-				<Square
-					key={index3}
-					value={squares[index3]}
-					onSquareClick={() => handleClick(index3)}
-				/>
-			</>
-		);
+			);
+		}
+		boardArray.push(<div className="board-row">{squareRows}</div>);
 	}
-
-	const boardRowsEmpty = Array(3).fill(null);
-
-	const boardRows = boardRowsEmpty.map((emptyBoardRow, index) => {
-		return (
-			<div className="board-row" key={index}>
-				{getSquaresSet(index)}
-			</div>
-		);
-	});
 
 	return (
 		<>
 			<div className="status">{status}</div>
-			{/* <div className="board-row">
-				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-				<Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-			</div>
-			<div className="board-row">
-				<Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-				<Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-				<Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-			</div>
-			<div className="board-row">
-				<Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-				<Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-				<Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-			</div> */}
-			{boardRows}
+			{boardArray}
 		</>
 	);
 }
